@@ -5,8 +5,8 @@ import { useAuth } from '../context/AuthContext';
 import { useApp } from '../context/AppContext';
 
 export default function AdminLogin() {
-  const [username, setUsername] = useState('admin');
-  const [password, setPassword] = useState('iknadmin2026');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const { login } = useAuth();
@@ -69,6 +69,7 @@ export default function AdminLogin() {
                 required
                 value={username}
                 onChange={e => setUsername(e.target.value)}
+                placeholder="Enter admin username"
                 className="w-full pl-10 pr-4 py-2.5 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary-600"
               />
             </div>
@@ -85,24 +86,16 @@ export default function AdminLogin() {
                 required
                 value={password}
                 onChange={e => setPassword(e.target.value)}
+                placeholder="••••••••••••"
                 className="w-full pl-10 pr-4 py-2.5 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary-600"
               />
-            </div>
-          </div>
-
-          {/* Demo credential badge */}
-          <div className="p-3 rounded-xl bg-slate-50 border border-slate-100 text-[11px] text-slate-500 space-y-1">
-            <span className="font-bold text-slate-700 block">Default Credentials:</span>
-            <div className="flex justify-between">
-              <span>User: <strong className="text-slate-800">admin</strong></span>
-              <span>Pass: <strong className="text-slate-800">iknadmin2026</strong></span>
             </div>
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3.5 px-4 rounded-xl font-bold text-xs uppercase tracking-wider text-slate-900 bg-gold hover:bg-gold-400 active:scale-95 transition shadow-lg shadow-gold/20 flex items-center justify-center gap-2"
+            className="w-full py-3.5 px-4 rounded-xl font-bold text-xs uppercase tracking-wider text-slate-900 bg-gold hover:bg-gold-400 active:scale-95 transition shadow-lg shadow-gold/20 flex items-center justify-center gap-2 mt-2"
           >
             {loading ? (
               <div className="w-4 h-4 border-2 border-slate-900 border-t-transparent rounded-full animate-spin"></div>
