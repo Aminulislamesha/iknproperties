@@ -39,9 +39,9 @@ export default function AdminLogin() {
         {/* Brand header */}
         <div className="text-center space-y-2 mb-8">
           <img
-            src="/logo.jpg"
+            src="/logo.png"
             alt="IKN Properties Logo"
-            className="w-16 h-16 rounded-full object-cover mx-auto shadow-xl border-2 border-gold/70"
+            className="w-16 h-16 object-contain mx-auto drop-shadow-xl"
           />
           <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">
             IKN <span className="text-gold">PROPERTIES</span>

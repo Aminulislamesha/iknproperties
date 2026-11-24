@@ -61,9 +61,9 @@ export default function FounderSection() {
                       </p>
                     </div>
                     <img
-                      src="/logo.jpg"
+                      src="/logo.png"
                       alt="IKN Logo"
-                      className="w-12 h-12 rounded-full object-cover border border-gold/60 shadow shrink-0"
+                      className="w-12 h-12 object-contain drop-shadow shrink-0"
                     />
                   </div>
                   <div className="pt-2 border-t border-white/10 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-300">

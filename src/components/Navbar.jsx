@@ -101,9 +101,9 @@ export default function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <img
-              src="/logo.jpg"
+              src="/logo.png"
               alt="IKN Properties Logo"
-              className="w-11 h-11 rounded-full object-cover shadow-md border-2 border-gold/70 group-hover:scale-105 transition-transform shrink-0"
+              className="w-11 h-11 object-contain drop-shadow group-hover:scale-105 transition-transform shrink-0"
             />
             <div>
               <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-primary-950 block leading-tight font-sans">

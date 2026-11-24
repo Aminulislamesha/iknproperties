@@ -58,9 +58,9 @@ export default function AdminLayout() {
         {/* Brand */}
         <div className="p-6 border-b border-white/10 flex items-center gap-3">
           <img
-            src="/logo.jpg"
+            src="/logo.png"
             alt="IKN Properties Logo"
-            className="w-10 h-10 rounded-full object-cover border-2 border-gold/60 shadow"
+            className="w-10 h-10 object-contain drop-shadow shrink-0"
           />
           <div>
             <span className="text-base font-extrabold text-white block leading-tight">

@@ -42,9 +42,9 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <img
-                src="/logo.jpg"
+                src="/logo.png"
                 alt="IKN Properties Logo"
-                className="w-12 h-12 rounded-full object-cover shadow-lg border-2 border-gold/60"
+                className="w-12 h-12 object-contain drop-shadow-md shrink-0"
               />
               <span className="text-2xl font-extrabold tracking-tight text-white">
                 IKN <span className="text-gold">PROPERTIES</span>
