@@ -4,6 +4,7 @@ import path from 'path';
 import fs from 'fs';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
+import multer from 'multer';
 import { fileURLToPath } from 'url';
 import { getDb, saveDb } from './db.js';
 
@@ -43,6 +44,107 @@ const authenticateToken = (req, res, next) => {
     next();
   });
 };
+
+// ================= FILE UPLOAD CONFIG & ROUTES =================
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, UPLOADS_DIR);
+  },
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname).toLowerCase();
+    const cleanName = path.basename(file.originalname, ext).replace(/[^a-zA-Z0-9_-]/g, '_');
+    const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
+    cb(null, `${cleanName}-${uniqueSuffix}${ext}`);
+  }
+});
+
+const upload = multer({
+  storage,
+  limits: { fileSize: 25 * 1024 * 1024 }, // 25MB max
+  fileFilter: (req, file, cb) => {
+    const allowedExts = /jpeg|jpg|png|webp|gif|svg|avif/;
+    const ext = path.extname(file.originalname).toLowerCase().replace('.', '');
+    if (file.mimetype.startsWith('image/') || allowedExts.test(ext)) {
+      cb(null, true);
+    } else {
+      cb(new Error('Only image files (JPG, PNG, WebP, GIF, SVG, AVIF) are allowed!'));
+    }
+  }
+});
+
+// Single image upload
+app.post('/api/upload', authenticateToken, (req, res) => {
+  upload.single('image')(req, res, (err) => {
+    if (err instanceof multer.MulterError) {
+      return res.status(400).json({ error: `Upload error: ${err.message}` });
+    } else if (err) {
+      return res.status(400).json({ error: err.message });
+    }
+    if (!req.file) {
+      return res.status(400).json({ error: 'No image file was received.' });
+    }
+    const fileUrl = `/uploads/${req.file.filename}`;
+    res.json({
+      message: 'Image uploaded successfully',
+      url: fileUrl,
+      filename: req.file.filename,
+      size: req.file.size
+    });
+  });
+});
+
+// Multiple images upload (for project detail galleries)
+app.post('/api/upload/multiple', authenticateToken, (req, res) => {
+  upload.array('images', 25)(req, res, (err) => {
+    if (err instanceof multer.MulterError) {
+      return res.status(400).json({ error: `Upload error: ${err.message}` });
+    } else if (err) {
+      return res.status(400).json({ error: err.message });
+    }
+    if (!req.files || req.files.length === 0) {
+      return res.status(400).json({ error: 'No image files were received.' });
+    }
+    const files = req.files.map(f => ({
+      url: `/uploads/${f.filename}`,
+      filename: f.filename,
+      size: f.size
+    }));
+    res.json({
+      message: `${req.files.length} images uploaded successfully`,
+      urls: files.map(f => f.url),
+      files
+    });
+  });
+});
+
+// Base64 upload fallback
+app.post('/api/upload/base64', authenticateToken, (req, res) => {
+  const { data, filename } = req.body;
+  if (!data) {
+    return res.status(400).json({ error: 'No base64 image data provided.' });
+  }
+  try {
+    const matches = data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+    if (!matches || matches.length !== 3) {
+      return res.status(400).json({ error: 'Invalid base64 data string.' });
+    }
+    const mimeType = matches[1];
+    const buffer = Buffer.from(matches[2], 'base64');
+    let ext = mimeType.split('/')[1] || 'jpg';
+    if (ext === 'jpeg') ext = 'jpg';
+    const cleanName = (filename || 'image').replace(/[^a-zA-Z0-9_-]/g, '_');
+    const safeFilename = `${cleanName}-${Date.now()}.${ext}`;
+    const filePath = path.join(UPLOADS_DIR, safeFilename);
+    fs.writeFileSync(filePath, buffer);
+    res.json({
+      message: 'Image uploaded successfully',
+      url: `/uploads/${safeFilename}`,
+      filename: safeFilename
+    });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to save base64 image.' });
+  }
+});
 
 // ================= AUTH ROUTES =================
 app.post('/api/auth/login', (req, res) => {
