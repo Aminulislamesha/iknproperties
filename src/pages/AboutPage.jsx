@@ -1,7 +1,15 @@
 import React from 'react';
-import { Shield, Target, Eye, Award, CheckCircle, MapPin, Phone } from 'lucide-react';
+import { Shield, Target, Eye, Award, CheckCircle, MapPin, Phone, Mail, GraduationCap, MessageCircle } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { useApp } from '../context/AppContext';
+
+function FacebookIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+    </svg>
+  );
+}
 
 export default function AboutPage() {
   const { lang, settings, openInquiryModal } = useApp();
@@ -114,15 +122,21 @@ export default function AboutPage() {
         {/* Leadership & Founder Profile */}
         <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-100 shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-4 flex justify-center">
-            <div className="relative w-64 h-72 sm:w-72 sm:h-80 rounded-3xl overflow-hidden bg-gradient-to-b from-slate-100 to-emerald-50 border-2 border-gold/40 shadow-xl flex items-end justify-center">
-              <img
-                src="/owner.png"
-                alt="Founder & Managing Director"
-                className="w-full h-full object-contain filter drop-shadow-md"
-              />
-              <div className="absolute bottom-3 inset-x-3 bg-brandDark/90 backdrop-blur-md px-3 py-2 rounded-xl text-center border border-gold/30">
-                <span className="text-xs font-extrabold text-white block">Managing Director & Founder</span>
-                <span className="text-[10px] text-gold font-semibold">IKN Properties</span>
+            <div className="relative w-64 sm:w-72 rounded-3xl overflow-hidden bg-gradient-to-b from-slate-100 to-emerald-50 border-2 border-gold/40 shadow-xl p-3 text-center">
+              <div className="relative mx-auto w-full h-72 sm:h-80 overflow-hidden flex items-end justify-center">
+                <img
+                  src="/owner.png"
+                  alt="MD. Ibrahim Khalil - Founder & Managing Director"
+                  className="w-full h-full object-contain filter drop-shadow-md"
+                />
+              </div>
+              <div className="mt-3 bg-brandDark text-white p-3.5 rounded-2xl border border-gold/30 text-left">
+                <span className="text-sm font-extrabold text-white block">MD. Ibrahim Khalil</span>
+                <span className="text-[11px] text-gold font-medium flex items-center gap-1 mt-0.5">
+                  <GraduationCap className="w-3.5 h-3.5 text-gold shrink-0" />
+                  <span>BA (Hons) in English, MA, B.Ed</span>
+                </span>
+                <span className="text-[10px] text-emerald-300 font-semibold block mt-0.5">Founder & Managing Director</span>
               </div>
             </div>
           </div>
@@ -132,8 +146,12 @@ export default function AboutPage() {
               Leadership & Vision
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
-              {lang === 'bn' ? 'নেতৃত্বে সরাসরি প্রতিষ্ঠাতা ও ব্যবস্থাপনা পরিচালক' : 'Direct Leadership & Personal Commitment'}
+              {lang === 'bn' ? 'নেতৃত্বে সরাসরি প্রতিষ্ঠাতা ও ব্যবস্থাপনা পরিচালক: মো. ইব্রাহিম খলিল' : 'Direct Leadership: MD. Ibrahim Khalil'}
             </h2>
+            <div className="flex flex-wrap items-center gap-2 text-xs font-semibold text-gold-dark bg-gold/10 p-2.5 rounded-xl border border-gold/30">
+              <GraduationCap className="w-4 h-4 text-gold" />
+              <span>Academic Credentials: BA (Hons) in English, MA, B.Ed</span>
+            </div>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
               {lang === 'bn'
                 ? 'আইকেএন প্রোপার্টিজ কোনো অজ্ঞাত কর্পোরেট সত্ত্বা নয়; এর পেছনে রয়েছে প্রত্যক্ষ ব্যক্তিগত দায়বদ্ধতা ও সততা। উত্তর বাড্ডার ইস্টার্ন রোডে প্রতিটি প্রকল্পের সার্বিক পরিকল্পনা, জমির নির্ভেজাল সাব-কবলা রেজিস্ট্রেশন এবং নির্মাণ তদারকি প্রতিষ্ঠাতা নিজে সাইটে থেকে নিশ্চিত করেন।'
@@ -142,18 +160,42 @@ export default function AboutPage() {
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 italic text-xs text-slate-700">
               “{settings?.taglineBn || 'নিজের নামে জমি কিনুন, সবাই মিলে কম খরচে ফ্ল্যাট গড়ুন। বিশ্বাসের ভিত্তিতে গড়ে উঠুক আপনার নিরাপদ বিনিয়োগ।'}”
             </div>
+            
+            {/* Direct Connect Buttons */}
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <button
-                onClick={() => openInquiryModal('Direct Leadership Consultation')}
+                onClick={() => openInquiryModal('Direct Founder Meeting')}
                 className="px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider text-slate-900 bg-gold hover:bg-gold-400 transition shadow"
               >
                 {lang === 'bn' ? 'সরাসরি সাক্ষাতের আবেদন' : 'Request Personal Meeting'}
               </button>
+
               <a
-                href="tel:01703033789"
-                className="px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider text-primary-800 bg-primary-50 hover:bg-primary-100 transition"
+                href="https://wa.me/8801703033789?text=Hello%20MD.%20Ibrahim%20Khalil"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider text-emerald-800 bg-emerald-50 hover:bg-emerald-100 transition flex items-center gap-1.5"
               >
-                Hotline: 01703-033789
+                <MessageCircle className="w-4 h-4 text-emerald-600" />
+                <span>WA: 01703033789</span>
+              </a>
+
+              <a
+                href="mailto:ikhalil1982@gmail.com"
+                className="px-4 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider text-slate-700 bg-slate-100 hover:bg-slate-200 transition flex items-center gap-1.5"
+              >
+                <Mail className="w-4 h-4 text-gold-dark" />
+                <span>ikhalil1982@gmail.com</span>
+              </a>
+
+              <a
+                href="https://www.facebook.com/ibrahim.khalil.452624"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider text-blue-700 bg-blue-50 hover:bg-blue-100 transition flex items-center gap-1.5"
+              >
+                <FacebookIcon className="w-4 h-4 text-blue-600" />
+                <span>Facebook</span>
               </a>
             </div>
           </div>

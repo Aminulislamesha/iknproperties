@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, Search, ShieldCheck, MapPin, Building, ArrowRight, Sparkles } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Search, ShieldCheck, MapPin, Building, ArrowRight, Sparkles, Phone, Mail, GraduationCap } from 'lucide-react';
 import { useApp } from '../context/AppContext';
+
+function FacebookIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" width="13" height="13" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+    </svg>
+  );
+}
 
 export default function HeroSlider() {
   const { lang, openInquiryModal } = useApp();
@@ -116,33 +124,76 @@ export default function HeroSlider() {
             </button>
           </div>
 
-          {/* Quick Badges & Founder Trust Anchor */}
-          <div className="pt-4 flex flex-col sm:flex-row sm:items-center gap-4">
-            <div className="flex items-center gap-3 p-2.5 pr-4 rounded-2xl bg-brandDark/85 backdrop-blur-md border border-gold/40 shadow-xl max-w-md">
-              <img
-                src="/owner.png"
-                alt="Founder & Managing Director"
-                className="w-12 h-12 rounded-full object-cover object-top border-2 border-gold shadow shrink-0 bg-slate-100"
-              />
-              <div>
-                <div className="flex items-center gap-1 text-gold text-xs font-bold">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>{lang === 'bn' ? 'সরাসরি প্রতিষ্ঠাতার তত্ত্বাবধান' : 'Direct Founder Supervision'}</span>
+          {/* Owner Profile Showcase */}
+          <div className="pt-2 max-w-xl">
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-brandDark/90 backdrop-blur-md border border-gold/50 shadow-2xl transition hover:border-gold">
+              <div className="flex items-center gap-3.5">
+                {/* Owner Avatar with gold ring & verified check */}
+                <div className="relative shrink-0">
+                  <img
+                    src="/owner.png"
+                    alt="MD. Ibrahim Khalil - Founder & Managing Director"
+                    className="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover object-top border-2 border-gold shadow-lg bg-slate-100"
+                  />
+                  <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-emerald-500 rounded-full border-2 border-brandDark flex items-center justify-center text-white shadow" title="Verified Founder">
+                    <ShieldCheck className="w-3 h-3 text-white" />
+                  </div>
                 </div>
-                <p className="text-[11px] text-slate-300 leading-tight mt-0.5">
-                  {lang === 'bn' ? 'শতভাগ নির্ভেজাল সাব-কবলা দলিল ও স্বচ্ছ হিসাব' : '100% Sub-Kabla land title & open-book construction'}
-                </p>
-              </div>
-            </div>
 
-            <div className="flex flex-wrap items-center gap-3 text-xs text-slate-300">
-              <div className="flex items-center gap-1.5 bg-white/5 px-2.5 py-1.5 rounded-lg border border-white/10">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                <span>RAJUK G+9</span>
-              </div>
-              <div className="flex items-center gap-1.5 bg-white/5 px-2.5 py-1.5 rounded-lg border border-white/10">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Save 35-40%</span>
+                {/* Info Details */}
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h3 className="text-sm sm:text-base font-extrabold text-white tracking-wide">
+                      MD. Ibrahim Khalil
+                    </h3>
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gold/20 text-gold border border-gold/40">
+                      {lang === 'bn' ? 'প্রতিষ্ঠাতা ও ব্যবস্থাপনা পরিচালক' : 'Founder & MD'}
+                    </span>
+                  </div>
+
+                  <p className="text-[11px] sm:text-xs text-gold font-medium mt-0.5 flex items-center gap-1.5">
+                    <GraduationCap className="w-3.5 h-3.5 text-gold shrink-0" />
+                    <span>BA (Hons) in English, MA, B.Ed</span>
+                  </p>
+
+                  {/* Contact Links: Phone/WhatsApp, Email, Facebook */}
+                  <div className="mt-2 pt-2 border-t border-white/10 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[11px]">
+                    <a
+                      href="https://wa.me/8801703033789?text=Hello%20MD.%20Ibrahim%20Khalil,%20I%20am%20interested%20in%20IKN%20Properties."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 text-slate-200 hover:text-emerald-400 font-semibold transition"
+                      title="Call / WhatsApp: 01703033789"
+                    >
+                      <Phone className="w-3 h-3 text-emerald-400" />
+                      <span>01703033789</span>
+                    </a>
+
+                    <span className="text-slate-500 hidden sm:inline">•</span>
+
+                    <a
+                      href="mailto:ikhalil1982@gmail.com"
+                      className="flex items-center gap-1 text-slate-200 hover:text-gold font-semibold transition"
+                      title="Email: ikhalil1982@gmail.com"
+                    >
+                      <Mail className="w-3 h-3 text-gold" />
+                      <span>ikhalil1982@gmail.com</span>
+                    </a>
+
+                    <span className="text-slate-500 hidden sm:inline">•</span>
+
+                    <a
+                      href="https://www.facebook.com/ibrahim.khalil.452624"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 text-slate-200 hover:text-blue-400 font-semibold transition"
+                      title="Facebook Profile"
+                    >
+                      <FacebookIcon className="w-3 h-3 text-blue-400" />
+                      <span>Facebook</span>
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

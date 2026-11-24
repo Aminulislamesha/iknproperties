@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Save, Lock, Building, Phone, Mail, MapPin, Globe } from 'lucide-react';
+import { Save, Lock, Building, Phone, Mail, MapPin, Globe, UserCheck } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useApp } from '../context/AppContext';
 
@@ -216,6 +216,70 @@ export default function AdminSettings() {
               value={settings.youtube || ''}
               onChange={e => setSettingsState({ ...settings, youtube: e.target.value })}
               className="w-full px-3 py-2 rounded-xl border border-slate-200"
+            />
+          </div>
+        </div>
+
+        <h2 className="text-sm font-bold uppercase tracking-wider text-primary-800 border-b border-slate-100 pt-4 pb-3 flex items-center gap-2">
+          <UserCheck className="w-4 h-4 text-primary-600" />
+          <span>Founder & Leadership Profile (MD. Ibrahim Khalil)</span>
+        </h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label className="block font-bold text-slate-700 mb-1">Founder Full Name</label>
+            <input
+              type="text"
+              value={settings.founderName || ''}
+              onChange={e => setSettingsState({ ...settings, founderName: e.target.value })}
+              className="w-full px-3 py-2 rounded-xl border border-slate-200"
+              placeholder="MD. Ibrahim Khalil"
+            />
+          </div>
+
+          <div>
+            <label className="block font-bold text-slate-700 mb-1">Academic Degrees / Qualifications</label>
+            <input
+              type="text"
+              value={settings.founderDegrees || ''}
+              onChange={e => setSettingsState({ ...settings, founderDegrees: e.target.value })}
+              className="w-full px-3 py-2 rounded-xl border border-slate-200"
+              placeholder="BA (Hons) in English, MA, B.Ed"
+            />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div>
+            <label className="block font-bold text-slate-700 mb-1">Founder Direct Phone / WA</label>
+            <input
+              type="text"
+              value={settings.founderPhone || ''}
+              onChange={e => setSettingsState({ ...settings, founderPhone: e.target.value })}
+              className="w-full px-3 py-2 rounded-xl border border-slate-200"
+              placeholder="01703033789"
+            />
+          </div>
+
+          <div>
+            <label className="block font-bold text-slate-700 mb-1">Founder Email</label>
+            <input
+              type="email"
+              value={settings.founderEmail || ''}
+              onChange={e => setSettingsState({ ...settings, founderEmail: e.target.value })}
+              className="w-full px-3 py-2 rounded-xl border border-slate-200"
+              placeholder="ikhalil1982@gmail.com"
+            />
+          </div>
+
+          <div>
+            <label className="block font-bold text-slate-700 mb-1">Founder Personal Facebook Link</label>
+            <input
+              type="text"
+              value={settings.founderFacebook || ''}
+              onChange={e => setSettingsState({ ...settings, founderFacebook: e.target.value })}
+              className="w-full px-3 py-2 rounded-xl border border-slate-200"
+              placeholder="https://www.facebook.com/ibrahim.khalil.452624"
             />
           </div>
         </div>
