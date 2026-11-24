@@ -1,0 +1,489 @@
+import fs from 'fs';
+import path from 'path';
+import bcrypt from 'bcryptjs';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const DATA_DIR = path.join(__dirname, 'data');
+const DB_FILE = path.join(DATA_DIR, 'db.json');
+
+// Ensure data directory exists
+if (!fs.existsSync(DATA_DIR)) {
+  fs.mkdirSync(DATA_DIR, { recursive: true });
+}
+
+const defaultAdminPasswordHash = bcrypt.hashSync('iknadmin2026', 10);
+
+const initialData = {
+  users: [
+    {
+      id: 'admin-1',
+      username: 'admin',
+      email: 'admin@iknproperties.com',
+      password: defaultAdminPasswordHash,
+      role: 'superadmin',
+      name: 'IKN Properties Management'
+    }
+  ],
+  settings: {
+    companyName: 'IKN Properties',
+    companyNameBn: 'আইকেএন প্রোপার্টিজ',
+    tagline: 'Buy Land in Your Own Name, Build Flats Together at Low Cost',
+    taglineBn: 'নিজের নামে জমি কিনুন, সবাই মিলে কম খরচে ফ্ল্যাট গড়ুন। বিশ্বাসের ভিত্তিতে গড়ে উঠুক আপনার নিরাপদ বিনিয়োগ।',
+    address: '158/1B (4th Floor), Moynarbag, Hossen Market, North Badda, Dhaka-1212',
+    addressBn: '১৫৮/১বি (৪র্থ তলা), ময়নাবাগ, হোসেন মার্কেট, উত্তর বাড্ডা, ঢাকা-১২১২',
+    phone1: '01703-033789',
+    phone2: '01721-961935',
+    whatsapp: '+8801703033789',
+    email: 'info@iknproperties.com',
+    domain: 'https://iknproperties.com',
+    facebook: 'https://www.facebook.com/iknproperties',
+    youtube: 'https://www.youtube.com/@iknproperties',
+    officeHours: 'Saturday - Thursday: 9:30 AM - 7:30 PM (Friday Closed)',
+    stats: {
+      completedProjects: '2+',
+      ongoingProjects: '2',
+      happyClients: '80+',
+      landShareSavedPercent: '35-40%'
+    }
+  },
+  sliders: [
+    {
+      id: 'slide-1',
+      title: 'Own Land in Your Name, Build Flats Together at Cost',
+      titleBn: 'নিজের নামে জমি কিনুন, সবাই মিলে কম খরচে ফ্ল্যাট গড়ুন',
+      subtitle: 'IKN Properties guarantees 100% RAJUK approval, registered mutation, and zero developer profit markup.',
+      subtitleBn: '১০০% রাজউক অনুমোদিত, সম্পূর্ণ নামজারি ও সাব-কবলা রেজিস্ট্রেশন সম্পন্ন। মধ্যস্বত্বভোগী ছাড়া সর্বোচ্চ নিরাপত্তা।',
+      buttonText: 'Explore Projects',
+      buttonLink: '/projects',
+      secondaryButtonText: 'Calculate Cost',
+      secondaryButtonLink: '/#calculator',
+      bgImage: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1920&q=80',
+      active: true
+    },
+    {
+      id: 'slide-2',
+      title: 'Rose Garden & Shopno Tower — North Badda, Dhaka',
+      titleBn: 'রোজ গার্ডেন ও স্বপ্ন টাওয়ার — উত্তর বাড্ডা, ঢাকা',
+      subtitle: 'G+9 Luxury Residential towers on Eastern Road with 3 Beds, 3 Baths, Dual Lifts, Substation & 24/7 Security.',
+      subtitleBn: 'ইস্টার্ন রোডে জি+৯ আধুনিক বহুতল ভবন। পাইল কাস্টিং চলমান, এখনই আপনার জমি শেয়ার নিশ্চিত করুন।',
+      buttonText: 'View Rose Garden',
+      buttonLink: '/projects/rose-garden',
+      secondaryButtonText: 'Book Site Visit',
+      secondaryButtonLink: '/contact',
+      bgImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80',
+      active: true
+    },
+    {
+      id: 'slide-3',
+      title: 'Transparent Joint Building Development in Dhaka',
+      titleBn: 'যৌথ ভবন নির্মাণ — জমির মালিকদের সর্বোচ্চ লাভজনক অংশীদারিত্ব',
+      subtitle: 'Partner with IKN Properties for joint construction with bank-level accountability and modern architecture.',
+      subtitleBn: 'জমির মালিকদের জন্য শতভাগ স্বচ্ছতা, সময়মতো হস্তান্তর ও অত্যাধুনিক স্থাপত্য নকশার নিশ্চয়তা।',
+      buttonText: 'Our Services',
+      buttonLink: '/services',
+      secondaryButtonText: 'Call Hotline',
+      secondaryButtonLink: 'tel:01703033789',
+      bgImage: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1920&q=80',
+      active: true
+    }
+  ],
+  projects: [
+    {
+      id: 'rose-garden',
+      slug: 'rose-garden',
+      title: 'Rose Garden',
+      titleBn: 'রোজ গার্ডেন রেসিডেন্সিয়াল',
+      category: 'Land Share Flats',
+      status: 'Ongoing',
+      location: 'Eastern Road, North Badda, Dhaka-1212',
+      locationBn: 'ইস্টার্ন রোড, উত্তর বাড্ডা, ঢাকা-১২১২',
+      apartmentSize: '1,250 SFT',
+      totalUnits: 63,
+      floors: 'G+9',
+      landSharePrice: 1800000,
+      estimatedConstructionCost: 2500000,
+      estimatedTotalCost: 4300000,
+      constructionPeriod: '30 Months',
+      bedrooms: 3,
+      bathrooms: 3,
+      balconies: 2,
+      drawingDining: 'Spacious Separate Drawing & Dining',
+      kitchen: 'Modern Kitchen with Exhaust & Granite Counter',
+      lifts: 2,
+      security: '24/7 CCTV & Security Guard',
+      generator: 'Full Generator Power Backup',
+      substation: 'Dedicated Electric Substation Installed',
+      soilTest: 'Completed & Certified by Structural Engineers',
+      rajukApproval: 'Approved for G+9 Multi-Storey Residential Building',
+      legalStatus: 'Land Registration & Mutation 100% Completed in Buyers\' Names',
+      pilingStatus: '136 Piles Cast, 13 Remaining (Near Completion)',
+      progressPercentage: 45,
+      featured: true,
+      thumbnail: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1000&q=80',
+      images: [
+        'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80'
+      ],
+      description: 'Rose Garden is IKN Properties\' premier 63-unit luxury residential project located in the heart of Eastern Road, North Badda. Designed under the smart land-share flat model, buyers acquire a direct registered share of prime Dhaka land and participate in joint construction at actual material and labor cost. This project offers unmatched cost efficiency, cutting flat ownership expenses by 35-40% compared to conventional commercial real estate.',
+      descriptionBn: 'রোজ গার্ডেন হলো আইকেএন প্রোপার্টিজের একটি অনন্য আবাসন প্রকল্প। উত্তর বাড্ডার শান্ত মনোরম পরিবেশে ইস্টার্ন রোডে নির্মিত হচ্ছে এই ৬৩ ইউনিটের ৯ তলা রাজউক অনুমোদিত বহুতল ভবন। জমি শেয়ার পদ্ধতিতে সম্পূর্ণ খরচের দামে আপনি পাচ্ছেন ৩ বেড, ৩ বাথ ও ২ বারান্দার ১,২৫০ বর্গফুটের আধুনিক ফ্ল্যাট। সরাসরি নিজের নামে জমির সাব-কবলা রেজিস্ট্রেশন ও মিউটেশনসহ শতভাগ আইনি সুরক্ষা।',
+      amenities: [
+        '2 High-Speed Modern Passenger Lifts',
+        '24/7 Security Guards with Full HD CCTV Surveillance',
+        'Automated Generator Backup for Uninterrupted Power',
+        'Dedicated High-Capacity Electrical Substation',
+        'Underground Water Reservoir with Deep Tube-well',
+        'Community Hall & Rooftop Landscaped Garden',
+        'RAJUK Standard Fire Detection & Extinguisher Setup',
+        'Intercom System for Every Apartment Unit',
+        'Dedicated Spacious Ground Floor Car Parking'
+      ],
+      floorPlans: [
+        {
+          name: 'Typical Unit A (1,250 SFT)',
+          specs: '3 Bed, 3 Bath, 2 Balcony, Drawing, Dining, Kitchen',
+          image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80'
+        },
+        {
+          name: 'Typical Unit B (1,250 SFT)',
+          specs: '3 Bed, 3 Bath, 2 Balcony, Open Plan Living & Dining',
+          image: 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80'
+        }
+      ]
+    },
+    {
+      id: 'shopno-tower',
+      slug: 'shopno-tower',
+      title: 'Shopno Tower (স্বপ্ন টাওয়ার)',
+      titleBn: 'স্বপ্ন টাওয়ার',
+      category: 'Land Share Flats',
+      status: 'Ongoing',
+      location: 'Eastern Road, North Badda, Dhaka-1212',
+      locationBn: 'ইস্টার্ন রোড, উত্তর বাড্ডা, ঢাকা-১২১২',
+      apartmentSize: '1,350 SFT',
+      totalUnits: 18,
+      floors: 'G+9',
+      landSharePrice: 2000000,
+      estimatedConstructionCost: 2500000,
+      estimatedTotalCost: 4500000,
+      constructionPeriod: '30 Months',
+      bedrooms: 3,
+      bathrooms: 3,
+      balconies: 2,
+      drawingDining: 'Separate Royal Drawing & Dining Area',
+      kitchen: 'Spacious Kitchen with Utility Verandah',
+      lifts: 1,
+      security: '24/7 Security & CCTV',
+      generator: 'Standby Generator Power Backup',
+      substation: 'Own Substation',
+      soilTest: 'Completed',
+      rajukApproval: 'Approved for G+9 Residential Building',
+      legalStatus: 'Land Registration Completed, Mutation Completed',
+      pilingStatus: 'Piling 100% Completed. Foundation Works Commenced',
+      progressPercentage: 50,
+      featured: true,
+      thumbnail: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1000&q=80',
+      images: [
+        'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80'
+      ],
+      description: 'Shopno Tower is an exclusive boutique residential building featuring just 18 premium apartments, guaranteeing privacy and peaceful community living. Located prominently on Eastern Road, North Badda with easy access to Gulshan-1 and Hatirjheel. With piling 100% completed, buyers can secure their land share with direct registration and start construction immediately.',
+      descriptionBn: 'স্বপ্ন টাওয়ার উত্তর বাড্ডার ইস্টার্ন রোডে একটি এক্সক্লুসিভ ১৮ ইউনিটের বুটিক রেসিডেনশিয়াল প্রজেক্ট। নিরিবিলি পরিবেশ ও খোলামেলা আলোর সমাহার। পাইলিংয়ের কাজ শতভাগ সম্পন্ন হয়েছে এবং বেসমেন্ট ও ফাউন্ডেশনের কাজ দ্রুত গতিতে এগিয়ে চলছে। জমি শেয়ার মাত্র ২০ লাখ টাকা এবং নির্মাণ খরচ আনুমানিক ২৫ লাখ টাকায় আপনার স্বপ্নের ৩ বেডরুমের ১,৩৫০ বর্গফুটের ফ্ল্যাট।',
+      amenities: [
+        'High-Speed Modern Lift',
+        'Full Generator Backup System',
+        'Dedicated Substation & Grounding',
+        '24/7 CCTV & Security Post',
+        'Rooftop Family Lounge & Green Corner',
+        'Covered Car Parking Slots'
+      ],
+      floorPlans: [
+        {
+          name: 'Unit Layout (1,350 SFT)',
+          specs: '3 Bed, 3 Bath, 2 Balconies, Formal Living & Family Dining',
+          image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80'
+        }
+      ]
+    },
+    {
+      id: 'ikn-green-paradise',
+      slug: 'ikn-green-paradise',
+      title: 'IKN Green Paradise',
+      titleBn: 'আইকেএন গ্রীন প্যারাডাইজ',
+      category: 'Upcoming Projects',
+      status: 'Upcoming',
+      location: 'Badda Link Road (Near Gulshan), Dhaka',
+      locationBn: 'বাড্ডা লিংক রোড (গুলশানের সন্নিকটে), ঢাকা',
+      apartmentSize: '1,400 SFT',
+      totalUnits: 36,
+      floors: 'G+9',
+      landSharePrice: 2200000,
+      estimatedConstructionCost: 2600000,
+      estimatedTotalCost: 4800000,
+      constructionPeriod: '32 Months',
+      bedrooms: 3,
+      bathrooms: 3,
+      balconies: 3,
+      drawingDining: 'Grand Living & Dining Room',
+      kitchen: 'Gourmet Kitchen with Pantry',
+      lifts: 2,
+      security: 'Smart Digital Security & CCTV',
+      generator: '100% Generator Backup',
+      substation: 'Installed',
+      soilTest: 'Completed',
+      rajukApproval: 'Approval in Process',
+      legalStatus: 'Land Demarcation & Legal Vetting Completed',
+      pilingStatus: 'Upcoming Groundbreaking Q1 2027',
+      progressPercentage: 10,
+      featured: false,
+      thumbnail: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1000&q=80',
+      images: [
+        'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80'
+      ],
+      description: 'An upcoming eco-friendly luxury residential tower near Badda Link Road offering rapid connectivity to Gulshan and Banani. Pre-booking open for land-shares.',
+      descriptionBn: 'গুলশান ও হাতিরঝিলের সন্নিকটে বাড্ডা লিংক রোডের কাছে পরিবেশবান্ধব লাক্সারি রেসিডেন্সিয়াল ভবন। জমি শেয়ার প্রি-বুকিং চলছে।',
+      amenities: [
+        'Dual High-Speed Lifts',
+        'Green Rooftop Oasis & Jogging Track',
+        'Smart Access Entry & CCTV',
+        'Substation & Automatic Generator'
+      ],
+      floorPlans: []
+    }
+  ],
+  progressUpdates: [
+    {
+      id: 'prog-1',
+      projectId: 'rose-garden',
+      projectTitle: 'Rose Garden',
+      date: 'November 18, 2026',
+      milestone: 'Piling Progress Update',
+      milestoneBn: 'পাইলিং কাজের অগ্রগতি প্রতিবেদন',
+      percentage: 45,
+      description: '136 piles cast successfully out of total required piles. 13 remaining piles are scheduled for casting this week under structural engineering supervision.',
+      descriptionBn: 'মোট পাইলের মধ্যে ১৩৬টি পাইল কাস্টিং শতভাগ সফলভাবে সম্পন্ন হয়েছে। বাকি ১৩টি পাইলের কাজ চলতি সপ্তাহেই শেষ হবে।',
+      photoUrl: 'https://images.unsplash.com/photo-1541888946425-d0fbb186156a?auto=format&fit=crop&w=1000&q=80'
+    },
+    {
+      id: 'prog-2',
+      projectId: 'shopno-tower',
+      projectTitle: 'Shopno Tower',
+      date: 'November 15, 2026',
+      milestone: 'Piling 100% Completed',
+      milestoneBn: 'পাইলিং কাজ শতভাগ সম্পন্ন',
+      percentage: 50,
+      description: 'All foundation piling works completed and verified by civil quality testing team. Pile cap excavation and base concrete works commenced.',
+      descriptionBn: 'স্বপ্ন টাওয়ারের সকল পাইলিং কাজ সফলভাবে সম্পন্ন হয়েছে। পাইল ক্যাপ ও বেইজ কনস্ট্রাকশনের প্রাথমিক কাজ পুরোদমে চলছে।',
+      photoUrl: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1000&q=80'
+    },
+    {
+      id: 'prog-3',
+      projectId: 'rose-garden',
+      projectTitle: 'Rose Garden',
+      date: 'October 28, 2026',
+      milestone: 'Soil Test & Rig Mobilization',
+      milestoneBn: 'সয়েল টেস্ট ও রিগ মেশিন স্থাপন',
+      percentage: 25,
+      description: 'Sub-soil investigation and load-bearing test reports approved by RAJUK registered engineers. Heavy hydraulic piling rig mobilized on Eastern Road site.',
+      descriptionBn: 'মাটি পরীক্ষার চূড়ান্ত রিপোর্ট পেশাদার ইঞ্জিনিয়ারদের দ্বারা নিরীক্ষিত ও অনুমোদিত। সাইটে রিগ মেশিন স্থাপন করে পাইলিং কাজ শুরু হয়।',
+      photoUrl: 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1000&q=80'
+    }
+  ],
+  leads: [
+    {
+      id: 'lead-1',
+      name: 'Mohammad Faruk Hossain',
+      phone: '01711-234567',
+      email: 'faruk.hossain@gmail.com',
+      project: 'Rose Garden',
+      serviceType: 'Land Share Flats',
+      status: 'Contacted',
+      notes: 'Interested in Unit 4B. Requested site visit next Saturday afternoon.',
+      createdAt: '2026-11-20T10:15:00.000Z'
+    },
+    {
+      id: 'lead-2',
+      name: 'Dr. Nusrat Jahan',
+      phone: '01819-987654',
+      email: 'dr.nusrat@yahoo.com',
+      project: 'Shopno Tower',
+      serviceType: 'Land Share Flats',
+      status: 'Site Visit Scheduled',
+      notes: 'Looking for 1,350 SFT apartment on 5th or 6th floor.',
+      createdAt: '2026-11-22T14:30:00.000Z'
+    },
+    {
+      id: 'lead-3',
+      name: 'Al-Haj Rafiqul Islam',
+      phone: '01912-345678',
+      email: 'rafiqul.islam@outlook.com',
+      project: 'General Inquiry',
+      serviceType: 'Joint Building Development',
+      status: 'New',
+      notes: 'Owns 4 katha land in North Badda. Wants to discuss joint venture ratio.',
+      createdAt: '2026-11-24T08:00:00.000Z'
+    }
+  ],
+  blogs: [
+    {
+      id: 'blog-1',
+      slug: 'how-land-share-flats-save-40-percent-in-dhaka',
+      title: 'How Land Share Flats Save 35-40% Compared to Conventional Developers in Dhaka',
+      titleBn: 'কীভাবে জমি শেয়ারের মাধ্যমে ৩৫-৪০% কম খরচে ঢাকায় বিলাসবহুল ফ্ল্যাট কিনবেন?',
+      excerpt: 'Understand the revolutionary real estate model where buyers purchase registered land directly and build at actual cost without middleman markups.',
+      excerptBn: 'জমি শেয়ারিং পদ্ধতির মাধ্যমে কীভাবে মধ্যস্বত্বভোগী ও প্রথাগত রিয়েল এস্টেটের মাত্রাতিরিক্ত মুনাফা এড়িয়ে সাধ্যের মধ্যে আধুনিক ফ্ল্যাট পাওয়া সম্ভব, জেনে নিন বিস্তারিত।',
+      author: 'IKN Research Team',
+      date: 'November 20, 2026',
+      readTime: '5 min read',
+      coverImage: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1000&q=80',
+      category: 'Investment Guide',
+      tags: ['Land Share', 'Dhaka Real Estate', 'Cost Savings', 'Smart Investment'],
+      content: `### What is the Land Share Flat Concept?
+In traditional real estate development in Dhaka, commercial developers acquire or joint-venture on land and build apartments with substantial marketing overheads, sales commissions, and profit margins ranging between 35% and 50%. A typical 1,250 SFT flat in North Badda from a conventional developer frequently costs 70 to 85 Lakh BDT.
+
+Under **IKN Properties' Land-Share System**:
+1. **Direct Land Ownership:** You purchase an undivided proportional share of land directly registered (Sub-Kabla) in your name.
+2. **Transparent Construction Cost:** Building expenses are paid in installments over the construction period (typically 30 months) based on actual material procurement and labor costs.
+3. **No Commercial Markups:** For projects like Rose Garden, the land share is 18 Lakh BDT and estimated construction is 25 Lakh BDT, bringing your total cost to just 40-45 Lakh BDT.
+
+### Why Is It Safer?
+Because the land deed is in your name from day one with updated mutation (নামজারি), your capital is backed by prime physical property in Dhaka city.`
+    },
+    {
+      id: 'blog-2',
+      slug: '5-rules-for-checking-rajuk-approval-and-legal-documents',
+      title: '5 Crucial Rules for Verifying RAJUK Approval & Land Mutation Before Buying an Apartment',
+      titleBn: 'ফ্ল্যাট বা জমি শেয়ার কেনার আগে রাজউক অনুমোদন ও কাগজপত্র যাচাইয়ের ৫টি নিয়ম',
+      excerpt: 'A comprehensive checklist every property buyer in Dhaka must review before paying token money: CS, SA, RS, BS khatiyan, mutation, and building approval.',
+      excerptBn: 'ফ্ল্যাট কেনার আগে জমি ও ভবনের বৈধতা নিশ্চিত করতে এই ৫টি অপরিহার্য আইনি বিষয় ও রাজউক অনুমোদন অবশ্যই যাচাই করে নিন।',
+      author: 'Adv. S. Rahman (Legal Advisor)',
+      date: 'November 15, 2026',
+      readTime: '7 min read',
+      coverImage: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1000&q=80',
+      category: 'Legal Advice',
+      tags: ['RAJUK Approval', 'Land Law', 'Dhaka Housing', 'Verification'],
+      content: `### 1. Verification of CS, SA, RS and City Survey (BS) Khatiyan
+Ensure uninterrupted ownership lineage from the original recorded owners to the present seller. Any missing deed or discrepancy can delay registration.
+
+### 2. DCR & Updated Land Revenue Tax (Dakhila)
+Confirm that the land mutation (নামজারি) is in the seller's name and land revenue tax (খাজনা) is paid up to the current fiscal year.
+
+### 3. RAJUK Approval & Approved Sheet (G+9)
+Both Rose Garden and Shopno Tower have obtained verified G+9 residential approval from RAJUK. Always cross-check the setback rules and architectural drawings.
+
+### 4. Soil Test & Structural Engineering Clearance
+Ensure deep soil test borings were conducted and certified by qualified structural engineers to determine proper pile depth.`
+    },
+    {
+      id: 'blog-3',
+      slug: 'why-north-badda-eastern-road-is-the-next-hotspot',
+      title: 'Why Eastern Road, North Badda is Dhaka\'s Next Real Estate Investment Hotspot',
+      titleBn: 'কেন উত্তর বাড্ডার ইস্টার্ন রোড হতে যাচ্ছে ঢাকার আবাসন খাতের সেরা হটস্পট?',
+      excerpt: 'Proximity to Gulshan-1, Hatirjheel expressway, and Purbachal 300-feet highway makes North Badda the most strategic residential hub.',
+      excerptBn: 'গুলশান, হাতিরঝিল ও পূর্বাচল এক্সপ্রেসওয়ের সাথে চমৎকার যোগাযোগের কারণে উত্তর বাড্ডায় সম্পত্তির মূল্য দ্রুত বৃদ্ধি পাচ্ছে।',
+      author: 'IKN Properties Market Insights',
+      date: 'November 10, 2026',
+      readTime: '4 min read',
+      coverImage: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80',
+      category: 'Market Trends',
+      tags: ['North Badda', 'Eastern Road', 'Urban Development', 'Gulshan Proximity'],
+      content: `Eastern Road in North Badda is witnessing transformative infrastructural upgrades. With 5-minute transit to Gulshan-1 and seamless access to Hatirjheel, residents enjoy the lifestyle perks of prime diplomatic zones at half the price.`
+    }
+  ],
+  testimonials: [
+    {
+      id: 'test-1',
+      name: 'Engr. Mahbubur Rahman',
+      designation: 'Senior Structural Consultant & Rose Garden Partner',
+      comment: 'As a civil engineer, my primary concern was construction quality and structural integrity. IKN Properties verified every single soil test parameter and RAJUK drawing before starting. Getting land registration in my own name gave my family complete peace of mind.',
+      commentBn: 'একজন প্রকৌশলী হিসেবে আমি নির্মাণ মান নিয়ে সবচেয়ে বেশি সচেতন। আইকেএন প্রোপার্টিজ রাজউকের প্রতিটি নিয়ম মেনে কাজ করছে। নিজের নামে জমির সাফ-কবলা দলিল পেয়ে আমি শতভাগ সন্তুষ্ট।',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
+      rating: 5,
+      project: 'Rose Garden'
+    },
+    {
+      id: 'test-2',
+      name: 'Kazi Farhana Akhter',
+      designation: 'Bank Officer, Shopno Tower Buyer',
+      comment: 'Commercial developer prices in Gulshan and Badda were totally out of our family budget. Through IKN Properties land-share model, we booked a 1,350 SFT apartment at Shopno Tower for nearly 40% less. The payment schedule over 30 months is extremely manageable.',
+      commentBn: 'অন্যান্য কোম্পানির ফ্ল্যাটের দাম আমাদের সাধ্যের বাইরে ছিল। আইকেএন প্রোপার্টিজের জমি শেয়ারে আমরা প্রায় ৪০% কম খরচে স্বপ্ন টাওয়ারে ফ্ল্যাট বুক করেছি। ৩০ মাসের সহজ কিস্তি পরিশোধ করা খুবই সহজ।',
+      avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80',
+      rating: 5,
+      project: 'Shopno Tower'
+    },
+    {
+      id: 'test-3',
+      name: 'Haji Nurul Alam',
+      designation: 'Landowner & Joint Development Partner',
+      comment: 'I partnered with IKN Properties for joint building development on our family land in North Badda. Their transparency, respectful terms, and prompt RAJUK approval processing set them apart from traditional real estate developers.',
+      commentBn: 'আমার পৈতৃক জমিতে বহুতল ভবন নির্মাণের জন্য আইকেএন প্রোপার্টিজের সাথে যুক্ত হয়েছি। তাদের কাজের স্বচ্ছতা ও সততা আমাকে মুগ্ধ করেছে।',
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
+      rating: 5,
+      project: 'Joint Venture Development'
+    }
+  ],
+  faqs: [
+    {
+      id: 'faq-1',
+      category: 'Land Share',
+      question: 'What is a Land Share Flat and how does it work at IKN Properties?',
+      questionBn: 'জমি শেয়ারে ফ্ল্যাট কী এবং আইকেএন প্রোপার্টিজে এটি কীভাবে কাজ করে?',
+      answer: 'In the Land Share model, buyers collectively purchase the registered land for the building. Each buyer receives a registered deed (Sub-Kabla) and mutation in their name for their proportional share. Afterward, construction is executed collectively at actual cost without commercial developer profits.',
+      answerBn: 'জমি শেয়ার পদ্ধতিতে ক্রেতারা যৌথভাবে সরাসরি জমির আনুপাতিক অংশ কিনে নিজ নামে সাব-কবলা দলিল ও নামজারি সম্পন্ন করেন। এরপর সবাই মিলে ঠিকাদার বা ম্যানেজমেন্টের তত্ত্বাবধানে আসল নির্মাণ খরচে ফ্ল্যাট তৈরি করেন।'
+    },
+    {
+      id: 'faq-2',
+      category: 'Legal & Security',
+      question: 'Are Rose Garden and Shopno Tower RAJUK approved?',
+      questionBn: 'রোজ গার্ডেন ও স্বপ্ন টাওয়ার কি রাজউক অনুমোদিত?',
+      answer: 'Yes, both Rose Garden and Shopno Tower hold official RAJUK approval for G+9 multi-storey residential buildings. Structural designs strictly adhere to Bangladesh National Building Code (BNBC) standards.',
+      answerBn: 'হ্যাঁ, রোজ গার্ডেন ও স্বপ্ন টাওয়ার উভয় প্রকল্পই রাজউক (RAJUK) কর্তৃক জি+৯ আবাসিক বহুতল ভবন হিসেবে অনুমোদিত। বিএনবিসি কোড মেনে সকল স্ট্রাকচারাল ডিজাইন প্রণয়ন করা হয়েছে।'
+    },
+    {
+      id: 'faq-3',
+      category: 'Payment',
+      question: 'How is the construction cost paid?',
+      questionBn: 'নির্মাণ খরচ কীভাবে পরিশোধ করতে হয়?',
+      answer: 'The land share amount (18 or 20 Lakh BDT) is paid upfront for land purchase and registry. The estimated construction cost (~25 Lakh BDT) is paid in flexible monthly or milestone-based installments across the 30-month construction period.',
+      answerBn: 'জমির শেয়ারের মূল্য (১৮ বা ২০ লাখ টাকা) জমি রেজিস্ট্রেশনের সময় পরিশোধ করতে হয়। বাকি নির্মাণ খরচ (আনুমানিক ২৫ লাখ টাকা) ৩০ মাসের সহজ মাসিক কিস্তিতে কাজের অগ্রগতি অনুযায়ী পরিশোধ করা যায়।'
+    },
+    {
+      id: 'faq-4',
+      category: 'Joint Venture',
+      question: 'I own land in North Badda / Dhaka. Can I do joint development with IKN Properties?',
+      questionBn: 'আমার নিজস্ব জমি আছে, আমি কি আইকেএন প্রোপার্টিজের সাথে যৌথ নির্মাণ করতে পারি?',
+      answer: 'Yes! We offer joint building development partnerships with landowners, offering competitive share ratios, zero advance delays, and premium architectural execution. Contact our management directly at 01703-033789.',
+      answerBn: 'হ্যাঁ! জমির মালিকদের জন্য আমরা দিচ্ছি শতভাগ নির্ভরযোগ্য ও লাভজনক যৌথ আবাসন নির্মাণ সুবিধা। বিস্তারিত জানতে সরাসরি যোগাযোগ করুন ০১৭০৩-০৩৩৭৮৯ নম্বরে।'
+    }
+  ]
+};
+
+// Database helper functions
+export const getDb = () => {
+  try {
+    if (!fs.existsSync(DB_FILE)) {
+      fs.writeFileSync(DB_FILE, JSON.stringify(initialData, null, 2), 'utf8');
+      return initialData;
+    }
+    const data = fs.readFileSync(DB_FILE, 'utf8');
+    return JSON.parse(data);
+  } catch (err) {
+    console.error('Error reading DB file, returning initialData:', err);
+    return initialData;
+  }
+};
+
+export const saveDb = (data) => {
+  try {
+    fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2), 'utf8');
+    return true;
+  } catch (err) {
+    console.error('Error saving DB file:', err);
+    return false;
+  }
+};
