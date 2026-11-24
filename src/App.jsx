@@ -30,6 +30,7 @@ import AdminBlogs from './admin/AdminBlogs';
 import AdminTestimonials from './admin/AdminTestimonials';
 import AdminSliders from './admin/AdminSliders';
 import AdminSettings from './admin/AdminSettings';
+import AdminSEO from './admin/AdminSEO';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -57,6 +58,7 @@ export default function App() {
           <Route path="testimonials" element={<AdminTestimonials />} />
           <Route path="sliders" element={<AdminSliders />} />
           <Route path="settings" element={<AdminSettings />} />
+          <Route path="seo" element={<AdminSEO />} />
         </Route>
 
         {/* Public Website Routes */}

@@ -225,6 +225,18 @@ app.put('/api/settings', authenticateToken, (req, res) => {
   res.json({ message: 'Settings updated successfully', settings: db.settings });
 });
 
+app.get('/api/settings/seo', (req, res) => {
+  const db = getDb();
+  res.json(db.settings.seo || {});
+});
+
+app.put('/api/settings/seo', authenticateToken, (req, res) => {
+  const db = getDb();
+  db.settings.seo = { ...(db.settings.seo || {}), ...req.body };
+  saveDb(db);
+  res.json({ message: 'SEO settings updated successfully', seo: db.settings.seo });
+});
+
 // ================= SLIDERS ROUTES =================
 app.get('/api/sliders', (req, res) => {
   const db = getDb();
@@ -326,6 +338,31 @@ app.post('/api/progress', authenticateToken, (req, res) => {
 
   saveDb(db);
   res.status(201).json({ message: 'Progress update recorded', progress: newUpdate });
+});
+
+app.put('/api/progress/:id', authenticateToken, (req, res) => {
+  const db = getDb();
+  const index = (db.progressUpdates || []).findIndex(p => p.id === req.params.id);
+  if (index === -1) {
+    return res.status(404).json({ error: 'Progress milestone not found.' });
+  }
+
+  db.progressUpdates[index] = {
+    ...db.progressUpdates[index],
+    ...req.body,
+    updatedAt: new Date().toISOString()
+  };
+
+  // Optionally update project's progress percentage if updated
+  if (req.body.projectId && req.body.percentage) {
+    const projIdx = (db.projects || []).findIndex(p => p.id === req.body.projectId || p.slug === req.body.projectId);
+    if (projIdx !== -1) {
+      db.projects[projIdx].progressPercentage = Number(req.body.percentage);
+    }
+  }
+
+  saveDb(db);
+  res.json({ message: 'Progress milestone updated successfully', progress: db.progressUpdates[index] });
 });
 
 app.delete('/api/progress/:id', authenticateToken, (req, res) => {

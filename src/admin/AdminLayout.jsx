@@ -9,6 +9,7 @@ import {
   MessageSquare,
   Sliders,
   Settings,
+  Globe,
   LogOut,
   ExternalLink,
   Menu,
@@ -43,6 +44,7 @@ export default function AdminLayout() {
     { name: 'Articles & Blogs', path: '/admin/blogs', icon: BookOpen },
     { name: 'Testimonials', path: '/admin/testimonials', icon: MessageSquare },
     { name: 'Hero Sliders', path: '/admin/sliders', icon: Sliders },
+    { name: 'SEO Settings', path: '/admin/seo', icon: Globe },
     { name: 'Settings', path: '/admin/settings', icon: Settings },
   ];
 

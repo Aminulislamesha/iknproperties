@@ -37,6 +37,18 @@
       "ongoingProjects": "2",
       "happyClients": "80+",
       "landShareSavedPercent": "35-40%"
+    },
+    "seo": {
+      "metaTitle": "IKN Properties | Land Share Flats in Dhaka",
+      "metaDescription": "Discover smart land-share flats in North Badda, Dhaka by IKN Properties. Save 35-40% on building construction cost with direct registered sub-kabla ownership and RAJUK approved multi-storey buildings.",
+      "keywords": "land share flat dhaka, flat for sale north badda, ikn properties, rose garden badda, shopno tower, luxury apartment dhaka, affordable flat dhaka",
+      "canonicalUrl": "https://iknproperties.com",
+      "ogTitle": "IKN Properties - Premium Land Share Flats in North Badda, Dhaka",
+      "ogDescription": "Buy land in your own name and build luxury flats together at actual construction cost. 35-40% savings with 100% legal security.",
+      "ogImage": "/projects/rose_garden_main.jpg",
+      "googleAnalyticsId": "",
+      "googleSearchConsole": "",
+      "robotsIndexing": true
     }
   },
   "sliders": [
@@ -261,13 +273,14 @@
       "projectId": "rose-garden",
       "projectTitle": "Rose Garden",
       "date": "November 18, 2026",
-      "milestone": "Piling Progress Update",
+      "milestone": "136 Piles Cast Successfully",
       "milestoneBn": "পাইলিং কাজের অগ্রগতি প্রতিবেদন",
       "percentage": 45,
       "description": "136 piles cast successfully out of total required piles. 13 remaining piles are scheduled for casting this week under structural engineering supervision.",
       "descriptionBn": "মোট পাইলের মধ্যে ১৩৬টি পাইল কাস্টিং শতভাগ সফলভাবে সম্পন্ন হয়েছে। বাকি ১৩টি পাইলের কাজ চলতি সপ্তাহেই শেষ হবে।",
-      "photoUrl": "https://images.unsplash.com/photo-1541888946425-d0fbb186156a?auto=format&fit=crop&w=1000&q=80",
-      "image": "/projects/rose_garden_site_progress.jpg"
+      "photoUrl": "/projects/rose_garden_site_progress.jpg",
+      "image": "/projects/rose_garden_site_progress.jpg",
+      "updatedAt": "2026-11-24T17:14:31.373Z"
     },
     {
       "id": "prog-2",
@@ -279,7 +292,7 @@
       "percentage": 50,
       "description": "All foundation piling works completed and verified by civil quality testing team. Pile cap excavation and base concrete works commenced.",
       "descriptionBn": "স্বপ্ন টাওয়ারের সকল পাইলিং কাজ সফলভাবে সম্পন্ন হয়েছে। পাইল ক্যাপ ও বেইজ কনস্ট্রাকশনের প্রাথমিক কাজ পুরোদমে চলছে।",
-      "photoUrl": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1000&q=80"
+      "photoUrl": "/projects/shopno_tower_site.jpg"
     },
     {
       "id": "prog-3",
@@ -291,7 +304,7 @@
       "percentage": 25,
       "description": "Sub-soil investigation and load-bearing test reports approved by RAJUK registered engineers. Heavy hydraulic piling rig mobilized on Eastern Road site.",
       "descriptionBn": "মাটি পরীক্ষার চূড়ান্ত রিপোর্ট পেশাদার ইঞ্জিনিয়ারদের দ্বারা নিরীক্ষিত ও অনুমোদিত। সাইটে রিগ মেশিন স্থাপন করে পাইলিং কাজ শুরু হয়।",
-      "photoUrl": "https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1000&q=80"
+      "photoUrl": "/projects/construction_materials.jpg"
     }
   ],
   "leads": [
