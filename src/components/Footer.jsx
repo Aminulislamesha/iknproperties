@@ -41,9 +41,11 @@ export default function Footer() {
           {/* Column 1: Brand & Tagline */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-600 to-primary-900 flex items-center justify-center shadow-lg border border-gold/40">
-                <Shield className="w-6 h-6 text-gold" />
-              </div>
+              <img
+                src="/logo.jpg"
+                alt="IKN Properties Logo"
+                className="w-12 h-12 rounded-full object-cover shadow-lg border-2 border-gold/60"
+              />
               <span className="text-2xl font-extrabold tracking-tight text-white">
                 IKN <span className="text-gold">PROPERTIES</span>
               </span>

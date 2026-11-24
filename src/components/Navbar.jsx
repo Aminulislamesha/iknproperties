@@ -100,9 +100,11 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-8 flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-700 via-primary-800 to-primary-950 flex items-center justify-center shadow-md border border-gold/40 group-hover:scale-105 transition-transform">
-              <Shield className="w-6 h-6 text-gold" />
-            </div>
+            <img
+              src="/logo.jpg"
+              alt="IKN Properties Logo"
+              className="w-11 h-11 rounded-full object-cover shadow-md border-2 border-gold/70 group-hover:scale-105 transition-transform shrink-0"
+            />
             <div>
               <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-primary-950 block leading-tight font-sans">
                 IKN <span className="text-gold">PROPERTIES</span>

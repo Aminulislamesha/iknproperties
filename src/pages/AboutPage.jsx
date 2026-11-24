@@ -111,6 +111,54 @@ export default function AboutPage() {
           </div>
         </div>
 
+        {/* Leadership & Founder Profile */}
+        <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-100 shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-4 flex justify-center">
+            <div className="relative w-64 h-72 sm:w-72 sm:h-80 rounded-3xl overflow-hidden bg-gradient-to-b from-slate-100 to-emerald-50 border-2 border-gold/40 shadow-xl flex items-end justify-center">
+              <img
+                src="/owner.png"
+                alt="Founder & Managing Director"
+                className="w-full h-full object-contain filter drop-shadow-md"
+              />
+              <div className="absolute bottom-3 inset-x-3 bg-brandDark/90 backdrop-blur-md px-3 py-2 rounded-xl text-center border border-gold/30">
+                <span className="text-xs font-extrabold text-white block">Managing Director & Founder</span>
+                <span className="text-[10px] text-gold font-semibold">IKN Properties</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="lg:col-span-8 space-y-4">
+            <span className="text-xs font-bold uppercase tracking-widest text-primary-800 bg-emerald-100 px-3 py-1 rounded-full">
+              Leadership & Vision
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
+              {lang === 'bn' ? 'নেতৃত্বে সরাসরি প্রতিষ্ঠাতা ও ব্যবস্থাপনা পরিচালক' : 'Direct Leadership & Personal Commitment'}
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              {lang === 'bn'
+                ? 'আইকেএন প্রোপার্টিজ কোনো অজ্ঞাত কর্পোরেট সত্ত্বা নয়; এর পেছনে রয়েছে প্রত্যক্ষ ব্যক্তিগত দায়বদ্ধতা ও সততা। উত্তর বাড্ডার ইস্টার্ন রোডে প্রতিটি প্রকল্পের সার্বিক পরিকল্পনা, জমির নির্ভেজাল সাব-কবলা রেজিস্ট্রেশন এবং নির্মাণ তদারকি প্রতিষ্ঠাতা নিজে সাইটে থেকে নিশ্চিত করেন।'
+                : 'IKN Properties is built upon personal credibility and unwavering commitment. Every land-share partner has direct access to our founder. Our leadership personally supervises on-site piling casting, architectural standards, and transparent expenditure accounting.'}
+            </p>
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 italic text-xs text-slate-700">
+              “{settings?.taglineBn || 'নিজের নামে জমি কিনুন, সবাই মিলে কম খরচে ফ্ল্যাট গড়ুন। বিশ্বাসের ভিত্তিতে গড়ে উঠুক আপনার নিরাপদ বিনিয়োগ।'}”
+            </div>
+            <div className="pt-2 flex flex-wrap items-center gap-3">
+              <button
+                onClick={() => openInquiryModal('Direct Leadership Consultation')}
+                className="px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider text-slate-900 bg-gold hover:bg-gold-400 transition shadow"
+              >
+                {lang === 'bn' ? 'সরাসরি সাক্ষাতের আবেদন' : 'Request Personal Meeting'}
+              </button>
+              <a
+                href="tel:01703033789"
+                className="px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider text-primary-800 bg-primary-50 hover:bg-primary-100 transition"
+              >
+                Hotline: 01703-033789
+              </a>
+            </div>
+          </div>
+        </div>
+
         {/* Office & Direct Contact Box */}
         <div className="bg-emerald-luxury rounded-3xl p-8 sm:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="space-y-2">

@@ -116,19 +116,34 @@ export default function HeroSlider() {
             </button>
           </div>
 
-          {/* Quick Badges */}
-          <div className="pt-4 flex flex-wrap items-center gap-4 text-xs text-slate-300">
-            <div className="flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <span>RAJUK Approved (G+9)</span>
+          {/* Quick Badges & Founder Trust Anchor */}
+          <div className="pt-4 flex flex-col sm:flex-row sm:items-center gap-4">
+            <div className="flex items-center gap-3 p-2.5 pr-4 rounded-2xl bg-brandDark/85 backdrop-blur-md border border-gold/40 shadow-xl max-w-md">
+              <img
+                src="/owner.png"
+                alt="Founder & Managing Director"
+                className="w-12 h-12 rounded-full object-cover object-top border-2 border-gold shadow shrink-0 bg-slate-100"
+              />
+              <div>
+                <div className="flex items-center gap-1 text-gold text-xs font-bold">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>{lang === 'bn' ? 'সরাসরি প্রতিষ্ঠাতার তত্ত্বাবধান' : 'Direct Founder Supervision'}</span>
+                </div>
+                <p className="text-[11px] text-slate-300 leading-tight mt-0.5">
+                  {lang === 'bn' ? 'শতভাগ নির্ভেজাল সাব-কবলা দলিল ও স্বচ্ছ হিসাব' : '100% Sub-Kabla land title & open-book construction'}
+                </p>
+              </div>
             </div>
-            <div className="flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <span>Sub-Kabla Land Registry</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <span>Save 35-40% Cost</span>
+
+            <div className="flex flex-wrap items-center gap-3 text-xs text-slate-300">
+              <div className="flex items-center gap-1.5 bg-white/5 px-2.5 py-1.5 rounded-lg border border-white/10">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                <span>RAJUK G+9</span>
+              </div>
+              <div className="flex items-center gap-1.5 bg-white/5 px-2.5 py-1.5 rounded-lg border border-white/10">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Save 35-40%</span>
+              </div>
             </div>
           </div>
         </div>

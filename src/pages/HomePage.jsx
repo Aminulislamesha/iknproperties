@@ -4,6 +4,7 @@ import { ShieldCheck, Award, Users, Percent, ArrowRight, Building2, CheckCircle2
 import SEOHead from '../components/SEOHead';
 import HeroSlider from '../components/HeroSlider';
 import ProjectCard from '../components/ProjectCard';
+import FounderSection from '../components/FounderSection';
 import CostCalculator from '../components/CostCalculator';
 import ServicesSection from '../components/ServicesSection';
 import WhyLandShare from '../components/WhyLandShare';
@@ -141,6 +142,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Founder & Managing Director Spotlight Section */}
+      <FounderSection />
 
       {/* Services Section */}
       <ServicesSection />

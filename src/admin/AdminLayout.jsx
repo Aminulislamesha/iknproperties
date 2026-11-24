@@ -57,9 +57,11 @@ export default function AdminLayout() {
       <aside className="hidden lg:flex lg:flex-col w-64 bg-brandDark text-slate-300 border-r border-emerald-950 shrink-0">
         {/* Brand */}
         <div className="p-6 border-b border-white/10 flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary-600 to-primary-900 flex items-center justify-center border border-gold/40 shadow">
-            <Shield className="w-5 h-5 text-gold" />
-          </div>
+          <img
+            src="/logo.jpg"
+            alt="IKN Properties Logo"
+            className="w-10 h-10 rounded-full object-cover border-2 border-gold/60 shadow"
+          />
           <div>
             <span className="text-base font-extrabold text-white block leading-tight">
               IKN <span className="text-gold">PROPERTIES</span>
