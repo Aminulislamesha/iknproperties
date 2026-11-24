@@ -490,6 +490,12 @@ app.get('/sitemap.xml', (req, res) => {
   res.send(xml);
 });
 
+// Serve Public & Dist directories
+const PUBLIC_DIR = path.join(__dirname, '../public');
+if (fs.existsSync(PUBLIC_DIR)) {
+  app.use(express.static(PUBLIC_DIR));
+}
+
 // Serve Frontend in Production (dist directory)
 const DIST_DIR = path.join(__dirname, '../dist');
 if (fs.existsSync(DIST_DIR)) {

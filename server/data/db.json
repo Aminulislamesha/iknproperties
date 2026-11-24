@@ -50,7 +50,7 @@
       "buttonLink": "/projects",
       "secondaryButtonText": "Calculate Cost",
       "secondaryButtonLink": "/#calculator",
-      "bgImage": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1920&q=80",
+      "bgImage": "/projects/rose_garden_main.jpg",
       "active": true
     },
     {
@@ -63,7 +63,7 @@
       "buttonLink": "/projects/rose-garden",
       "secondaryButtonText": "Book Site Visit",
       "secondaryButtonLink": "/contact",
-      "bgImage": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80",
+      "bgImage": "/projects/shopno_tower_main.jpg",
       "active": true
     },
     {
@@ -76,7 +76,7 @@
       "buttonLink": "/services",
       "secondaryButtonText": "Call Hotline",
       "secondaryButtonLink": "tel:01703033789",
-      "bgImage": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1920&q=80",
+      "bgImage": "/projects/green_paradise_main.jpg",
       "active": true
     }
   ],
@@ -112,12 +112,13 @@
       "pilingStatus": "136 Piles Cast, 13 Remaining (Near Completion)",
       "progressPercentage": 45,
       "featured": true,
-      "thumbnail": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1000&q=80",
+      "thumbnail": "/projects/rose_garden_main.jpg",
       "images": [
-        "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80"
+        "/projects/rose_garden_main.jpg",
+        "/projects/rose_garden_billboard.jpg",
+        "/projects/rose_garden_plot_map.jpg",
+        "/projects/rose_garden_site_progress.jpg",
+        "/projects/rose_garden_floorplan.jpg"
       ],
       "description": "Rose Garden is IKN Properties' premier 63-unit luxury residential project located in the heart of Eastern Road, North Badda. Designed under the smart land-share flat model, buyers acquire a direct registered share of prime Dhaka land and participate in joint construction at actual material and labor cost. This project offers unmatched cost efficiency, cutting flat ownership expenses by 35-40% compared to conventional commercial real estate.",
       "descriptionBn": "রোজ গার্ডেন হলো আইকেএন প্রোপার্টিজের একটি অনন্য আবাসন প্রকল্প। উত্তর বাড্ডার শান্ত মনোরম পরিবেশে ইস্টার্ন রোডে নির্মিত হচ্ছে এই ৬৩ ইউনিটের ৯ তলা রাজউক অনুমোদিত বহুতল ভবন। জমি শেয়ার পদ্ধতিতে সম্পূর্ণ খরচের দামে আপনি পাচ্ছেন ৩ বেড, ৩ বাথ ও ২ বারান্দার ১,২৫০ বর্গফুটের আধুনিক ফ্ল্যাট। সরাসরি নিজের নামে জমির সাব-কবলা রেজিস্ট্রেশন ও মিউটেশনসহ শতভাগ আইনি সুরক্ষা।",
@@ -134,14 +135,14 @@
       ],
       "floorPlans": [
         {
-          "name": "Typical Unit A (1,250 SFT)",
-          "specs": "3 Bed, 3 Bath, 2 Balcony, Drawing, Dining, Kitchen",
-          "image": "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80"
+          "name": "Typical Floor Plan (1st to 9th Floor - 7 Units)",
+          "specs": "1,250 SFT | 3 Bed, 3 Bath, 2 Balcony, Drawing, Dining, Kitchen",
+          "image": "/projects/rose_garden_floorplan.jpg"
         },
         {
-          "name": "Typical Unit B (1,250 SFT)",
-          "specs": "3 Bed, 3 Bath, 2 Balcony, Open Plan Living & Dining",
-          "image": "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80"
+          "name": "13.82 Katha Demarcated Land Plot Map",
+          "specs": "Eastern Road, North Badda | Registered Ownership & Access Road",
+          "image": "/projects/rose_garden_plot_map.jpg"
         }
       ]
     },
@@ -176,11 +177,11 @@
       "pilingStatus": "Piling 100% Completed. Foundation Works Commenced",
       "progressPercentage": 50,
       "featured": true,
-      "thumbnail": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1000&q=80",
+      "thumbnail": "/projects/shopno_tower_main.jpg",
       "images": [
-        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+        "/projects/shopno_tower_main.jpg",
+        "/projects/shopno_tower_site.jpg",
+        "/projects/construction_materials.jpg"
       ],
       "description": "Shopno Tower is an exclusive boutique residential building featuring just 18 premium apartments, guaranteeing privacy and peaceful community living. Located prominently on Eastern Road, North Badda with easy access to Gulshan-1 and Hatirjheel. With piling 100% completed, buyers can secure their land share with direct registration and start construction immediately.",
       "descriptionBn": "স্বপ্ন টাওয়ার উত্তর বাড্ডার ইস্টার্ন রোডে একটি এক্সক্লুসিভ ১৮ ইউনিটের বুটিক রেসিডেনশিয়াল প্রজেক্ট। নিরিবিলি পরিবেশ ও খোলামেলা আলোর সমাহার। পাইলিংয়ের কাজ শতভাগ সম্পন্ন হয়েছে এবং বেসমেন্ট ও ফাউন্ডেশনের কাজ দ্রুত গতিতে এগিয়ে চলছে। জমি শেয়ার মাত্র ২০ লাখ টাকা এবং নির্মাণ খরচ আনুমানিক ২৫ লাখ টাকায় আপনার স্বপ্নের ৩ বেডরুমের ১,৩৫০ বর্গফুটের ফ্ল্যাট।",
@@ -194,9 +195,9 @@
       ],
       "floorPlans": [
         {
-          "name": "Unit Layout (1,350 SFT)",
+          "name": "Exclusive 2-Unit Boutique Floor Plan (1,350 SFT)",
           "specs": "3 Bed, 3 Bath, 2 Balconies, Formal Living & Family Dining",
-          "image": "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80"
+          "image": "/projects/rose_garden_floorplan.jpg"
         }
       ]
     },
@@ -231,10 +232,11 @@
       "pilingStatus": "Upcoming Groundbreaking Q1 2027",
       "progressPercentage": 10,
       "featured": false,
-      "thumbnail": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1000&q=80",
+      "thumbnail": "/projects/green_paradise_main.jpg",
       "images": [
-        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+        "/projects/green_paradise_main.jpg",
+        "/projects/green_paradise_site.jpg",
+        "/projects/rose_garden_plot_map.jpg"
       ],
       "description": "An upcoming eco-friendly luxury residential tower near Badda Link Road offering rapid connectivity to Gulshan and Banani. Pre-booking open for land-shares.",
       "descriptionBn": "গুলশান ও হাতিরঝিলের সন্নিকটে বাড্ডা লিংক রোডের কাছে পরিবেশবান্ধব লাক্সারি রেসিডেন্সিয়াল ভবন। জমি শেয়ার প্রি-বুকিং চলছে।",
@@ -244,7 +246,13 @@
         "Smart Access Entry & CCTV",
         "Substation & Automatic Generator"
       ],
-      "floorPlans": []
+      "floorPlans": [
+        {
+          "name": "Eco-Luxury Layout (1,400 SFT)",
+          "specs": "3 Bed, 3 Bath, 3 Balconies, Biophilic Architecture",
+          "image": "/projects/rose_garden_plot_map.jpg"
+        }
+      ]
     }
   ],
   "progressUpdates": [
@@ -258,7 +266,8 @@
       "percentage": 45,
       "description": "136 piles cast successfully out of total required piles. 13 remaining piles are scheduled for casting this week under structural engineering supervision.",
       "descriptionBn": "মোট পাইলের মধ্যে ১৩৬টি পাইল কাস্টিং শতভাগ সফলভাবে সম্পন্ন হয়েছে। বাকি ১৩টি পাইলের কাজ চলতি সপ্তাহেই শেষ হবে।",
-      "photoUrl": "https://images.unsplash.com/photo-1541888946425-d0fbb186156a?auto=format&fit=crop&w=1000&q=80"
+      "photoUrl": "https://images.unsplash.com/photo-1541888946425-d0fbb186156a?auto=format&fit=crop&w=1000&q=80",
+      "image": "/projects/rose_garden_site_progress.jpg"
     },
     {
       "id": "prog-2",
