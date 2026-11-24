@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ShieldCheck, Award, Users, Percent, ArrowRight, Building2, CheckCircle2, BookOpen } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import HeroSlider from '../components/HeroSlider';
+import QuickSearchFilter from '../components/QuickSearchFilter';
 import ProjectCard from '../components/ProjectCard';
 import FounderSection from '../components/FounderSection';
 import CostCalculator from '../components/CostCalculator';
@@ -46,8 +47,11 @@ export default function HomePage() {
       {/* Hero Section */}
       <HeroSlider />
 
+      {/* Floating Property Search Filter Bar */}
+      <QuickSearchFilter />
+
       {/* Trust & Credibility Stats Bar */}
-      <section className="bg-white border-b border-slate-100 py-10 mt-12 sm:mt-10">
+      <section className="bg-white border-b border-slate-100 py-8 sm:py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-md transition">

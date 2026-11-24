@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, Search, ShieldCheck, MapPin, Building, ArrowRight, Sparkles, Phone, Mail, GraduationCap } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ChevronLeft, ChevronRight, ShieldCheck, ArrowRight, Sparkles, Phone, Mail, GraduationCap } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
 function FacebookIcon(props) {
@@ -15,12 +15,6 @@ export default function HeroSlider() {
   const { lang, openInquiryModal } = useApp();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [sliders, setSliders] = useState([]);
-  const navigate = useNavigate();
-
-  // Quick filter states
-  const [filterType, setFilterType] = useState('All');
-  const [filterLocation, setFilterLocation] = useState('');
-  const [filterBudget, setFilterBudget] = useState('');
 
   useEffect(() => {
     fetch('/api/sliders')
@@ -50,15 +44,6 @@ export default function HeroSlider() {
     setCurrentSlide(prev => (prev - 1 + (sliders.length || 1)) % (sliders.length || 1));
   };
 
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    const query = new URLSearchParams();
-    if (filterType !== 'All') query.set('category', filterType);
-    if (filterLocation) query.set('location', filterLocation);
-    if (filterBudget) query.set('budget', filterBudget);
-    navigate(`/projects?${query.toString()}`);
-  };
-
   const slide = sliders[currentSlide] || {
     title: 'Own Land in Your Name, Build Flats Together at Cost',
     titleBn: 'নিজের নামে জমি কিনুন, সবাই মিলে কম খরচে ফ্ল্যাট গড়ুন',
@@ -70,7 +55,7 @@ export default function HeroSlider() {
   };
 
   return (
-    <div className="relative w-full min-h-[580px] lg:min-h-[660px] bg-slate-900 overflow-hidden flex flex-col justify-between">
+    <div className="relative w-full min-h-[600px] lg:min-h-[660px] bg-slate-900 overflow-hidden flex flex-col justify-between pb-16 sm:pb-20 lg:pb-24">
       {/* Background Image with Cinematic Dark Gradient Overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center transition-all duration-1000 transform scale-105"
@@ -84,7 +69,7 @@ export default function HeroSlider() {
       <div className="absolute -top-40 -left-40 w-96 h-96 bg-primary-600/20 rounded-full blur-3xl pointer-events-none"></div>
 
       {/* Hero Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 pt-20 lg:pt-28 pb-12 w-full flex-1 flex flex-col justify-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 pt-20 lg:pt-28 pb-8 w-full flex-1 flex flex-col justify-center">
         <div className="max-w-2xl space-y-5 animate-fade-in">
           {/* Trust Pill */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-gold/40 text-gold text-xs font-semibold">
@@ -202,7 +187,7 @@ export default function HeroSlider() {
 
       {/* Slider Controls */}
       {sliders.length > 1 && (
-        <div className="absolute right-6 bottom-32 hidden sm:flex items-center gap-2 z-20">
+        <div className="absolute right-6 bottom-16 sm:bottom-20 hidden sm:flex items-center gap-2 z-20">
           <button
             onClick={prevSlide}
             className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white flex items-center justify-center transition"
@@ -219,82 +204,6 @@ export default function HeroSlider() {
           </button>
         </div>
       )}
-
-      {/* Floating Quick Search Bar (Like dpremiumhomes.com) */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-8 w-full -mb-10 sm:-mb-8">
-        <form
-          onSubmit={handleSearchSubmit}
-          className="bg-white rounded-2xl shadow-2xl p-4 sm:p-5 border border-slate-100 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 items-center"
-        >
-          {/* Property Type Dropdown */}
-          <div>
-            <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
-              {lang === 'bn' ? 'প্রকল্পের ধরন' : 'Project Category'}
-            </label>
-            <div className="relative">
-              <Building className="w-4 h-4 text-primary-600 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-              <select
-                value={filterType}
-                onChange={(e) => setFilterType(e.target.value)}
-                className="w-full pl-9 pr-6 py-2.5 text-xs font-semibold rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-600 appearance-none"
-              >
-                <option value="All">{lang === 'bn' ? 'সকল প্রকল্প' : 'All Categories'}</option>
-                <option value="Land Share Flats">Land Share Flats (জমি শেয়ার)</option>
-                <option value="Ready Flats">Ready Flats (রেডি ফ্ল্যাট)</option>
-                <option value="Upcoming Projects">Upcoming (আসন্ন প্রকল্প)</option>
-              </select>
-            </div>
-          </div>
-
-          {/* Location */}
-          <div>
-            <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
-              {lang === 'bn' ? 'লোকেশন' : 'Location'}
-            </label>
-            <div className="relative">
-              <MapPin className="w-4 h-4 text-primary-600 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-              <select
-                value={filterLocation}
-                onChange={(e) => setFilterLocation(e.target.value)}
-                className="w-full pl-9 pr-6 py-2.5 text-xs font-semibold rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-600 appearance-none"
-              >
-                <option value="">{lang === 'bn' ? 'সকল এলাকা' : 'All Locations'}</option>
-                <option value="North Badda">North Badda, Eastern Road</option>
-                <option value="Badda Link Road">Badda Link Road (Near Gulshan)</option>
-                <option value="Dhaka">Dhaka Metropolis</option>
-              </select>
-            </div>
-          </div>
-
-          {/* Budget Range */}
-          <div>
-            <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
-              {lang === 'bn' ? 'বাজেট সীমা' : 'Budget Range'}
-            </label>
-            <select
-              value={filterBudget}
-              onChange={(e) => setFilterBudget(e.target.value)}
-              className="w-full px-3 py-2.5 text-xs font-semibold rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-600"
-            >
-              <option value="">{lang === 'bn' ? 'যেকোনো বাজেট' : 'Any Budget'}</option>
-              <option value="18-20">18 - 20 Lakh (Land Share)</option>
-              <option value="40-45">40 - 45 Lakh (Total Apartment)</option>
-              <option value="45+">45+ Lakh BDT</option>
-            </select>
-          </div>
-
-          {/* Search Button */}
-          <div className="pt-2 sm:pt-4">
-            <button
-              type="submit"
-              className="w-full py-2.5 px-4 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-primary-700 hover:bg-primary-800 active:scale-98 transition flex items-center justify-center gap-2 shadow-md shadow-primary-700/20"
-            >
-              <Search className="w-4 h-4 text-gold" />
-              <span>{lang === 'bn' ? 'ফ্ল্যাট অনুসন্ধান' : 'Find Properties'}</span>
-            </button>
-          </div>
-        </form>
-      </div>
     </div>
   );
 }
